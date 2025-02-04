@@ -51,11 +51,19 @@
                                                 src="{{ asset('photo') }}/{{ $student->photo }}" alt="{{ $student->name }}"
                                                 srcset=""> </td>
                                         <td>
-                                            <a class="btn btn-info" href="{{ url("student/show/$student->id") }}">Show</a>
+                                            <a class="btn btn-info" href="{{ url("student/$student->id") }}">Show</a>
                                             <a class="btn btn-primary"
-                                                href="{{ url("student/update/$student->id") }}">Edit</a>
+                                                href="{{ url("student/$student->id/edit") }}">Edit</a>
                                             <a class="btn btn-danger"
                                                 href="{{ url("student/delete/$student->id") }}">Del</a>
+
+                                                {{-- <form action="{{ route('student.destroy',$student->id) }}" method="post"> --}}
+                                                <form action="{{ url("student/$student->id") }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button  type="submit" class="btn btn-danger">Del_r</button>
+                                                </form>
+                                          
 
 
                                         </td>

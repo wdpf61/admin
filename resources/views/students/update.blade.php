@@ -14,13 +14,15 @@
                 <h4 class="card-title mb-0">Register Student</h4>
             </div>
             <div class="card-body">
-                <form action="{{url('student/update')}}"  method="post"  enctype="multipart/form-data">
+                <form action="{{url("student/{$student['id']}")}}"  method="post"  enctype="multipart/form-data">
                     @csrf
+                    {{-- @method('PUT') --}}
+                    <input type="hidden"  name="_method"  value="put">
                     <div class="input-block mb-3 row">
                         <label class="col-lg-3 col-form-label">Name</label>
                         <div class="col-lg-9">
                             <input type="text" class="form-control" name="name"  value="{{  $student['name'] }}">
-                            <input type="hidden" class="form-control" name="id"  value="{{  $student['id'] }}">
+                          
                             @error('name')
                              <span style="color: red" >{{$message}}</span>
                             @enderror

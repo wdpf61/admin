@@ -14,7 +14,8 @@
                 <h4 class="card-title mb-0">Register Student</h4>
             </div>
             <div class="card-body">
-                <form action="{{url('student/delete')}}"  method="post"  enctype="multipart/form-data">
+                <form action="{{url("student/{$student['id'] }")}}"  method="post"  enctype="multipart/form-data">
+                    @method('delete')
                     @csrf
                     <div class="input-block mb-3 row">
                         <label class="col-lg-3 col-form-label">Name</label>

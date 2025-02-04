@@ -74,7 +74,7 @@ class StudentController extends Controller
     }
 
    
-    public function update(Request $request)
+    public function update(Request $request ,$id)
     {
         $request->validate([
             'name'=>'required|min:3',
@@ -86,9 +86,9 @@ class StudentController extends Controller
             'address.in'=>"Address must be inbetween Dhaka or Rajshahi",
         ]);
 
-       // print_r($request->all());
+        //print_r($request->all());
 
-        $sutdent= Student::find($request->id);
+        $sutdent= Student::find($id);
         $sutdent->name= $request->name;
         $sutdent->roll= $request->roll;
         $sutdent->phone= $request->phone;
@@ -110,9 +110,11 @@ class StudentController extends Controller
         $student= Student::find($id);
         return view('students.delete', compact('student'));
     }
-    public function destroy(Request $request)
+
+
+    public function destroy($id)
     {
-      $del= Student::destroy($request->id);
+      $del= Student::destroy($id);
         if($del){
             return redirect('student')->with('success', "Student has been Deleted");
          } 
@@ -121,7 +123,7 @@ class StudentController extends Controller
 
     public function search(Request $request)
     {
-        $students= Student::where('name',"like", "%{$request->name}%" )->get();
+        $students= Student::where('name',"like", "%{$request->name}%" )->paginate(1);
 
         $requestdata= $request->name;
      

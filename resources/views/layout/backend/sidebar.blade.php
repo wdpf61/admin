@@ -434,7 +434,7 @@
                     <span>Main</span>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="la la-dashcube"></i> <span> Dashboard</span> <span
+                    <a href="#"><i class="la la-dashcube"></i> <span>{{__('message.dashboard')}}</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="{{url('student')}}">Student</a></li>

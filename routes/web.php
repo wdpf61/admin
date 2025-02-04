@@ -15,19 +15,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
-});
 
-Route::get('student', [StudentController::class,'index']);
 
-Route::prefix('student')->group(function(){
-    Route::get('create', [StudentController::class,'create']);
-    Route::post('create', [StudentController::class,'store']);
-    Route::get('update/{id}', [StudentController::class,'edit']);
-    Route::post('update', [StudentController::class,'update']);
-    Route::get('delete/{id}', [StudentController::class,'destroy_view']);
-    Route::post('delete', [StudentController::class,'destroy']);
-    Route::post('search', [StudentController::class,'search']);
-    Route::get('show/{id}', [StudentController::class,'show']);
-});
+   // return view('dashboard');
+})->middleware('checkage');;
+
+
+
+// Route::prefix('student')->group(function(){
+//     Route::get('/', [StudentController::class,'index']);
+//     Route::get('create', [StudentController::class,'create']);
+//     Route::post('create', [StudentController::class,'store']);
+//     Route::get('update/{id}', [StudentController::class,'edit']);
+//     Route::post('update', [StudentController::class,'update']);
+//     Route::get('delete/{id}', [StudentController::class,'destroy_view']);
+//     Route::post('delete', [StudentController::class,'destroy']);
+//     Route::post('search', [StudentController::class,'search']);
+//     Route::get('show/{id}', [StudentController::class,'show']);
+// });
+Route::post('student/search', [StudentController::class,'search']);
+Route::resource('student', StudentController::class);
+
+
+
+
 
