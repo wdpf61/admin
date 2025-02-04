@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'dashboard' => 'Dashboard',
+    'users' => 'users',
+    'settings' => 'settings',
+    'profile' => 'profile',
+    'logout' => 'logout',
+    'login' => 'login',
+    'register' => 'register',
+    'home' => 'home',
+    'about' => 'about',
+    'contact' => 'contact',
+    'services' => 'services',
+    'products' => 'products',
+    'categories' => 'products',
+    'orders' => 'অর্ডার',
+    'reports' => 'রিপোর্ট',
+    'help' => 'সহায়তা',
+    'notifications' => 'নোটিফিকেশন',
+    'messages' => 'বার্তা',
+    'admin_panel' => 'অ্যাডমিন প্যানেল',
+    'language' => 'ভাষা',
+    'search' => 'অনুসন্ধান',
+    'save' => 'সংরক্ষণ করুন',
+    'edit' => 'সম্পাদনা',
+    'delete' => 'মুছে ফেলুন',
+    'update' => 'আপডেট করুন',
+    'submit' => 'জমা দিন',
+];
+
