@@ -2,11 +2,17 @@
     
     @section('page_content')
         
- 
+       
     
     <!-- Page Header -->
     <div class="page-header">
         <div class="row">
+             @if (session('permission'))
+                  <span>{{session('permission')}}</span>
+             @endif
+             @if (session('locale'))
+                  <span>{{session('locale')}}</span>
+             @endif
             <div class="col-sm-12">
                 <h3 class="page-title">Welcome Admin!</h3>
                 <ul class="breadcrumb">

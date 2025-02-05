@@ -49,21 +49,27 @@
 
         <!-- Flag -->
         <li class="nav-item dropdown has-arrow flag-nav">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{url('lang/en')}}" role="button">
                 <img src="{{asset('assets')}}/img/flags/us.png" alt="Flag" height="20"> <span>English</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="javascript:void(0);" class="dropdown-item">
+                <a href="{{url('lang/en')}}" class="dropdown-item">
                     <img src="{{asset('assets')}}/img/flags/us.png" alt="Flag" height="16"> English
                 </a>
-                <a href="javascript:void(0);" class="dropdown-item">
+                <a href="{{url('lang/fr')}}" class="dropdown-item">
                     <img src="{{asset('assets')}}/img/flags/fr.png" alt="Flag" height="16"> French
                 </a>
-                <a href="javascript:void(0);" class="dropdown-item">
+                <a href="{{url('lang/es')}}" class="dropdown-item">
                     <img src="{{asset('assets')}}/img/flags/es.png" alt="Flag" height="16"> Spanish
                 </a>
-                <a href="javascript:void(0);" class="dropdown-item">
+                <a href="{{url('lang/de')}}" class="dropdown-item">
                     <img src="{{asset('assets')}}/img/flags/de.png" alt="Flag" height="16"> German
+                </a>
+                <a href="{{url('lang/ar')}}" class="dropdown-item">
+                    <img src="{{asset('assets')}}/img/flags/de.png" alt="Flag" height="16"> Arabic
+                </a>
+                <a href="{{url('lang/bn')}}" class="dropdown-item">
+                    <img src="{{asset('assets')}}/img/flags/de.png" alt="Flag" height="16"> Bangla
                 </a>
             </div>
         </li>
@@ -289,9 +295,9 @@
                 <span>Admin</span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="settings.html">Settings</a>
-                <a class="dropdown-item" href="index.html">Logout</a>
+                <a class="dropdown-item" href="profile.html">{{__('message.profile')}}</a>
+                <a class="dropdown-item" href="settings.html">{{__('message.settings')}}</a>
+                <a class="dropdown-item" href="index.html">{{__('message.logout')}}</a>
             </div>
         </li>
     </ul>

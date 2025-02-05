@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'bn', 'de','ar','es'])) {
+        Session::forget('locale');
+        Session::put('locale', $locale);
+    }
+    return redirect('/');
+});
+
+
 Route::get('/', function () {
-
-
-   // return view('dashboard');
-})->middleware('checkage');;
-
+    return view('dashboard');
+});
 
 
 // Route::prefix('student')->group(function(){
@@ -35,6 +46,9 @@ Route::get('/', function () {
 // });
 Route::post('student/search', [StudentController::class,'search']);
 Route::resource('student', StudentController::class);
+
+Route::get('role/delete/{id}', [RoleController::class,'manualDel']);
+Route::resource('role', RoleController::class)->middleware('roleMid');
 
 
 

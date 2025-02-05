@@ -29,7 +29,6 @@ session()->flush();
 Session::flush();  
 
 session()->flash('message', 'This is a flash message!');
-
 session('message');
 
 session()->reflash(); // Keeps all flash data for the next request

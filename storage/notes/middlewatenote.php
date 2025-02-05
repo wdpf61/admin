@@ -1,4 +1,4 @@
-for laravel 1
+for laravel 11
 
 global middleware
 $middleware->append(EnsureTokenIsValid::class);
