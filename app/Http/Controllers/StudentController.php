@@ -11,7 +11,7 @@ class StudentController extends Controller
     public function index()
     {
         //$students= Student::get();
-        $students= Student::paginate(1);
+        $students= Student::paginate(5);
         //  print_r($students);
 
         return view('students.index' , compact('students'));
@@ -37,13 +37,19 @@ class StudentController extends Controller
             'address.in'=>"Address must be inbetween Dhaka or Rajshahi",
         ]);
         
-         
+      
         $sutdent= new Student();
         $sutdent->name= $request->name;
         $sutdent->roll= $request->roll;
         $sutdent->phone= $request->phone;
         $sutdent->address= $request->address;
         $photoname=$request->name.".".$request->file('photo')->extension();
+
+        $photoPath = public_path('photo/' . $photoname);
+        if (file_exists($photoPath)) {
+            unlink($photoPath);
+        }
+
         $request->file('photo')->move(public_path('photo'), $photoname);
 
         $sutdent->photo= $photoname;
@@ -81,7 +87,7 @@ class StudentController extends Controller
             'roll'=>"required|min:4|numeric",
             'phone'=>"required|min:4|numeric",
             'address' => "required|in:dhaka,rajshahi",
-            'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'photo' => 'image|mimes:jpg,jpeg,png|max:2048',
         ],[
             'address.in'=>"Address must be inbetween Dhaka or Rajshahi",
         ]);
@@ -93,10 +99,25 @@ class StudentController extends Controller
         $sutdent->roll= $request->roll;
         $sutdent->phone= $request->phone;
         $sutdent->address= $request->address;
-        $photoname=$request->name.".".$request->file('photo')->extension();
-        $request->file('photo')->move(public_path('photo'), $photoname);
 
-        $sutdent->photo= $photoname;
+
+        if ($request->file('photo')) {
+            $photoname=$request->name.".".$request->file('photo')->extension();
+
+            $photoPath = public_path('photo/' . $photoname);
+            if (file_exists($photoPath)) {
+                unlink($photoPath);
+            }
+
+
+            $request->file('photo')->move(public_path('photo'), $photoname);
+    
+            $sutdent->photo= $photoname;
+        }else{
+            $sutdent->photo=  $sutdent->photo;
+        }
+
+    
 
         if($sutdent->save()){
             return redirect('student')->with('success', "Student has been updated");
@@ -123,7 +144,7 @@ class StudentController extends Controller
 
     public function search(Request $request)
     {
-        $students= Student::where('name',"like", "%{$request->name}%" )->paginate(1);
+        $students= Student::where('name',"like", "%{$request->name}%" )->paginate(5);
 
         $requestdata= $request->name;
      
